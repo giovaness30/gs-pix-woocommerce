@@ -19,7 +19,8 @@ function init_gs_pix_class(){
 		$this->chave_pix	 	= $this->get_option('chave_pix');
 		$this->merchant_name 	= $this->get_option('Merchant_name');
         $this->merchant_city	= $this->get_option('merchant_city');
-        $this->numb_whats	= $this->get_option('numb_whats');
+        $this->numb_whats	    = $this->get_option('numb_whats');
+        $this->return_status	    = $this->get_option('return_status');
 
         add_action ('woocommerce_update_options_payment_gateways_'. $this-> id, array ($this, 'process_admin_options'));
         add_action('woocommerce_thankyou_' . $this->id, array( $this, 'order_summary_preview' ) );
@@ -41,7 +42,7 @@ function init_gs_pix_class(){
                     'title'       => __('Nome que aparece pro cliente no finalizar pedido'),
                     'type'        => 'text',
                     'description' => __('Nome que aparece pro cliente no finalizar pedido'),
-                    'default'     => __('Pagamento Via Pix'),
+                    'default'     => __('Pagamento Pix'),
                     'desc_tip'    => true,
                 ),
                 'description' => array(
@@ -73,6 +74,15 @@ function init_gs_pix_class(){
                     'type'        => 'text',
                     'description' => __('Com ddd. "Ex 1188888888"'),
                     'class'	      => 'production'		
+                ),
+                'return_status' => array(
+                    'title'       => __('Status que retorna no Pedido'),
+                    'type'        => 'select',
+                    'options'  => array(
+                        'processing'    => __('Processando', 'woocommerce'),
+                        'on-hold'   => __('Aguardando', 'woocommerce'),
+                    ),
+                    'default'  => 'on-hold',
                 )
             );
         }
@@ -92,6 +102,8 @@ function init_gs_pix_class(){
 
             global $woocommerce;
             $order = new WC_Order( $order_id );
+
+            $order->update_status($this->return_status, __( 'Pagamento pelo PIX', 'woocommerce' ));
 
             // Return thankyou redirect
             return array(
