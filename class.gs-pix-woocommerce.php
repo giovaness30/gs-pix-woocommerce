@@ -17,7 +17,7 @@ function init_gs_pix_class(){
         $this->title 		 	= $this->get_option('title');
         $this->description 	 	= $this->get_option('description');
 		$this->chave_pix	 	= $this->get_option('chave_pix');
-		$this->merchant_name 	= $this->get_option('Merchant_name');
+		$this->merchant_name 	= $this->get_option('merchant_name');
         $this->merchant_city	= $this->get_option('merchant_city');
         $this->numb_whats	    = $this->get_option('numb_whats');
         $this->return_status	    = $this->get_option('return_status');
