@@ -125,7 +125,7 @@ function init_gs_pix_class(){
              <div class="row d-flex justify-content-center">
                 <input type="hidden" value="<?php echo $payloadQrCode; ?>" id="copiar">
                 <p class="col-12">Codigo Gerado! Efetue o pagamento pelo QR CODE utilizando o aplicativo do seu banco favorito.</p>
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?php echo $payloadQrCode; ?>">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?php echo urlencode($payloadQrCode); ?>">
                 <p class="col-12 d-flex justify-content-center" style="font-size: 12px"><?php echo $payloadQrCode; ?></p>
                 <div class="col-12"></div><button class="button pix-button-copy-code" style="margin-bottom: 20px;" onclick="copyCode()"><?php echo __('Clique aqui para copiar o Código acima', 'woocommerce-pix'); ?> </button></div>
                 <div class="pix-response-output inactive" style="margin: 2em 0.5em 1em;padding: 0.2em 1em;border: 2px solid #46b450;display: none;" aria-hidden="true" style=""><?php echo __('O código foi copiado para a área de transferência.', 'woocommerce-pix'); ?></div>

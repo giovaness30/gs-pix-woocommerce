@@ -4,7 +4,7 @@
  * Description:          Habilita modo de pagameto via QRCODE e codigo Pix em seu E-Commerce
  * Author:               Giovane Sedano
  * Author URI:           https://github.com/giovaness30
- * Version:              1.0.3
+ * Version:              1.0.4
  * License:              GPLv3 or later
  * Text Domain: 		 gs-pix-woocommerce
  *
